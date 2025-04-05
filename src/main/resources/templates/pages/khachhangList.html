@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách khách hàng</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>Danh sách khách hàng</h2>
+
+  <!-- Hiển thị thông báo nếu có lỗi -->
+  <div th:if="${not #lists.isEmpty(khachhangList)}">
+    <div class="alert alert-danger" th:text="${message}"></div>
+  </div>
+
+  <!-- Bảng danh sách khách hàng -->
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Mã KH</th>
+      <th>Tên KH</th>
+      <th>Địa chỉ</th>
+      <th>SĐT</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lặp qua danh sách khách hàng và hiển thị thông tin -->
+    <tr th:each="kh : ${khachhangList}">
+      <td th:text="${kh.makh}"></td>
+      <td th:text="${kh.tenkh}"></td>
+      <td th:text="${kh.diachi}"></td>
+      <td th:text="${kh.sdt}"></td>
+      <td th:text="${kh.email}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
